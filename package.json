@@ -21,10 +21,9 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint src",
         "lint:fix": "prettier --write ."
     },
-  "pre-commit": "lint:fix",
+    "pre-commit": "lint:fix",
     "eslintConfig": {
         "extends": [
             "react-app",
