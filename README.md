@@ -1,20 +1,22 @@
 # interview web frontend
 
-
 ## How to start?
 
 1. Grab the files!
+
 ```bash
 git clone git@github.com:dqhl76/Interview-web-frontend.git
 ```
 
 2. Install Dependencies
+
 ```bash
 cd Interview-web-frontend
 npm install
 ```
 
 3. Run!
+
 ```bash
 npm run start
 ```
