@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import RecordRTC from 'recordrtc';
-import { captureUserMedia } from './RecordFunction';
+import { captureUserMedia, getFileName } from './RecordFunction';
 
 interface Props {}
 class Record extends React.Component<any, any> {
@@ -27,16 +27,20 @@ class Record extends React.Component<any, any> {
 
     startRecord() {
         captureUserMedia((stream: any) => {
-            this.setState({
+            this.state = {
                 recordVideo: new RecordRTC(stream, { type: 'video' }),
-            });
+                src: null,
+            };
+            console.log(this.state.recordVideo)
             this.state.recordVideo.startRecording();
+            console.log(3)
         });
 
         setTimeout(() => {
             //  录制上限 回来修改
             this.stopRecord();
-        }, 4000);
+            
+        }, 10000);
     }
 
     stopRecord() {
@@ -46,8 +50,15 @@ class Record extends React.Component<any, any> {
                 data: this.state.recordVideo.blob,
                 id: Math.floor(Math.random() * 90000) + 10000,
             };
+            console.log(4);
+            var fileName = getFileName();
+            
+            var file = new File([this.state.recordVideo.getBlob()], fileName, {
+                type: 'video/webm'
+            });
 
-            RecordRTC.invokeSaveAsDialog(params.data);
+            RecordRTC.invokeSaveAsDialog(file, file.name);
+            console.log(5);
         });
     }
 
