@@ -1,0 +1,29 @@
+pre{
+    margin: 0em !important;
+    padding: 0em !important;
+    font-size: medium !important;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+    z-index: 2;
+    position:absolute;
+    width: 300px;
+    height: 300px;
+
+}
+textarea{
+    margin: 0em !important;
+    padding: 0em !important;
+    font-size: medium !important;
+    border: none !important;
+    line-height: 1.5 !important;
+    caret-color: white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+    background: none;
+    outline:none;
+    z-index: 3;
+    position:absolute;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    -webkit-text-fill-color: transparent;
+
+}
