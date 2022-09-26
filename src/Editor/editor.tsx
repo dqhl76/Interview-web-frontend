@@ -1,5 +1,9 @@
 import React from 'react';
-import CodeEditor from '@uiw/react-textarea-code-editor';
+
+import CodeMirror from "@uiw/react-codemirror";
+import { LanguageName, loadLanguage } from '@uiw/codemirror-extensions-langs';
+import { xcodeLight, xcodeDark } from "@uiw/codemirror-theme-xcode";
+
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,10 +11,11 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 class Editor extends React.Component {
-    state = { code: '', language: '' };
+    state = ({code:"",language:'cpp'})
     handleChange = (event: SelectChangeEvent) => {
-        this.setState({ language: event.target.value as string });
+        this.setState({ language: event.target.value as string});
     };
+
     render() {
         return (
             <>
@@ -33,20 +38,11 @@ class Editor extends React.Component {
                         </Select>
                     </FormControl>
                 </Box>
-                <CodeEditor
-                    value={this.state.code}
-                    language={this.state.language}
-                    placeholder='Please enter code.'
-                    onChange={(evn) =>
-                        this.setState({ code: evn.target.value })
-                    }
-                    padding={15}
-                    style={{
-                        fontSize: 20,
-                        backgroundColor: '#f5f5f5',
-                        fontFamily:
-                            'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-                    }}
+                <CodeMirror
+                    value="console.log('hello world!');"
+                    height="400px"
+                    theme={xcodeLight}
+                    extensions={[loadLanguage(this.state.language as LanguageName)!]}
                 />
             </>
         );
