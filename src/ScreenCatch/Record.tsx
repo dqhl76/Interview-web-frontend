@@ -11,6 +11,7 @@ class Record extends React.Component<any, any> {
         this.state = {
             recordVideo: null,
             src: null,
+            recording: false
         };
         this.requestUserMedia = this.requestUserMedia.bind(this);
         this.startRecord = this.startRecord.bind(this);
@@ -35,12 +36,12 @@ class Record extends React.Component<any, any> {
             this.state.recordVideo.startRecording();
             console.log(3)
         });
-
-        setTimeout(() => {
-            //  录制上限 回来修改
-            this.stopRecord();
+        this.setState( {recording: true});
+        // setTimeout(() => {
+        //     //  录制上限 回来修改
+        //     this.stopRecord();
             
-        }, 10000);
+        // }, 20000);
     }
 
     stopRecord() {
@@ -59,15 +60,29 @@ class Record extends React.Component<any, any> {
 
             RecordRTC.invokeSaveAsDialog(file, file.name);
             console.log(5);
+            this.setState( {recording: false});
         });
+        
     }
 
     render(): JSX.Element {
-        return (
-            <div className='Record'>
-                <button onClick={this.startRecord}>Start Record</button>
-            </div>
-        );
+
+        if (this.state.recording == true){
+            return (
+                <div className='Record'>
+                    <button disabled={true} onClick={this.startRecord} id='startButton'>Start Record</button>
+                    <button disabled={false} onClick={this.stopRecord} id='stopButton'>Stop Record</button>
+                </div>
+            );
+        }else{
+            return (
+                <div className='Record'>
+                    <button disabled={false} onClick={this.startRecord} id='startButton'>Start Record</button>
+                    <button disabled={true} onClick={this.stopRecord} id='stopButton'>Stop Record</button>
+                </div>
+            );
+        }
+        
     }
 }
 

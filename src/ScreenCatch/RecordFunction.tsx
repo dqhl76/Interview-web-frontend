@@ -1,7 +1,7 @@
 export function captureUserMedia(callback: any) {
-    //var params = { audio: false, video: true};
+    var params = { audio: true, video: true};
     console.log(1)
-    navigator.mediaDevices.getDisplayMedia().then(callback, (error) => {
+    navigator.mediaDevices.getDisplayMedia(params).then(callback, (error) => {
         alert(JSON.stringify(error));
     });
 }
