@@ -14,7 +14,7 @@ import axios from 'axios';
 
 class Editor extends React.Component {
     private editor = React.createRef<any>();
-    state = { code: '', language: 'cpp' , languageId: 54};
+    state = { code: '', language: 'cpp', languageId: 54 };
     handleEditorChange = (value: String) => {
         this.setState({ code: value });
     };
@@ -22,20 +22,15 @@ class Editor extends React.Component {
         this.setState({ language: event.target.value as string });
         if (event.target.value == 'cpp') {
             this.setState({ languageId: 54 });
-        }
-        else if (event.target.value == 'c') {
+        } else if (event.target.value == 'c') {
             this.setState({ languageId: 50 });
-        }
-        else if (event.target.value == 'php') {
+        } else if (event.target.value == 'php') {
             this.setState({ languageId: 68 });
-        }
-        else if (event.target.value == 'java') {
+        } else if (event.target.value == 'java') {
             this.setState({ languageId: 62 });
-        }
-        else if (event.target.value == 'javascript') {
+        } else if (event.target.value == 'javascript') {
             this.setState({ languageId: 63 });
-        }
-        else if (event.target.value == 'python') {
+        } else if (event.target.value == 'python') {
             this.setState({ languageId: 71 });
         }
     };
@@ -47,7 +42,7 @@ class Editor extends React.Component {
         };
         await axios({
             method: 'post',
-            url: 'http://182.92.215.108:2358/submissions',
+            url: 'https://oj.realdqhl.com/submissions',
             params: { base64_encoded: 'false', wait: 'true' },
             headers: {
                 'Content-Type': 'application/json',
