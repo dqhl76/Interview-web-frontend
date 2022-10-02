@@ -1,14 +1,16 @@
 export function captureUserMedia(callback: any) {
-    var params = { audio: true, video: true};
-    var mic = { audio: true, video: false};
+    var params = { audio: true, video: true };
+    var mic = { audio: true, video: false };
     console.log(1);
     navigator.mediaDevices.getDisplayMedia(params).then(
-        (videoStream)=>{
+        (videoStream) => {
             navigator.mediaDevices.getUserMedia(mic).then(
-                (micStream)=>{
+                (micStream) => {
                     var context = new AudioContext();
-                    var baseSource = context.createMediaStreamSource(videoStream);
-                    var extraSource = context.createMediaStreamSource(micStream);
+                    var baseSource =
+                        context.createMediaStreamSource(videoStream);
+                    var extraSource =
+                        context.createMediaStreamSource(micStream);
                     var dest = context.createMediaStreamDestination();
                     var baseGain = context.createGain();
                     var extraGain = context.createGain();
@@ -16,16 +18,21 @@ export function captureUserMedia(callback: any) {
                     extraGain.gain.value = 0.8;
                     baseSource.connect(baseGain).connect(dest);
                     extraSource.connect(extraGain).connect(dest);
-                    var result = new MediaStream([videoStream.getVideoTracks()[0], dest.stream.getAudioTracks()[0]]);
+                    var result = new MediaStream([
+                        videoStream.getVideoTracks()[0],
+                        dest.stream.getAudioTracks()[0],
+                    ]);
                     callback(result);
-                }
-                , (error) => {
-                alert(JSON.stringify(error));
-            });
-        }
-        , (error) => {
-        alert(JSON.stringify(error));
-    });
+                },
+                (error) => {
+                    alert(JSON.stringify(error));
+                },
+            );
+        },
+        (error) => {
+            alert(JSON.stringify(error));
+        },
+    );
 }
 
 export function getFileName() {

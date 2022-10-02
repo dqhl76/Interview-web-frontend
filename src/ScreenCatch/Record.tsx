@@ -56,9 +56,12 @@ class Record extends React.Component<any, any> {
             var file = new File([this.state.recordVideo.getBlob()], fileName, {
                 type: 'video/webm',
             });
-            getSeekableBlob(this.state.recordVideo.getBlob(), function(seekableBlob){
-                invokeSaveAsDialog(seekableBlob);
-            })
+            getSeekableBlob(
+                this.state.recordVideo.getBlob(),
+                function (seekableBlob) {
+                    invokeSaveAsDialog(seekableBlob);
+                },
+            );
             this.setState({ recording: false });
         });
     }
