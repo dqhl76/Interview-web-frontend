@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import RecordRTC from 'recordrtc';
+import RecordRTC, { getSeekableBlob, invokeSaveAsDialog } from 'recordrtc';
 import { captureUserMedia, getFileName } from './RecordFunction';
 
 interface Props {}
@@ -11,7 +11,7 @@ class Record extends React.Component<any, any> {
         this.state = {
             recordVideo: null,
             src: null,
-            recording: false
+            recording: false,
         };
         this.requestUserMedia = this.requestUserMedia.bind(this);
         this.startRecord = this.startRecord.bind(this);
@@ -32,15 +32,15 @@ class Record extends React.Component<any, any> {
                 recordVideo: new RecordRTC(stream, { type: 'video' }),
                 src: null,
             };
-            console.log(this.state.recordVideo)
+            console.log(this.state.recordVideo);
             this.state.recordVideo.startRecording();
-            console.log(3)
+            console.log(3);
         });
-        this.setState( {recording: true});
+        this.setState({ recording: true });
         // setTimeout(() => {
         //     //  录制上限 回来修改
         //     this.stopRecord();
-            
+
         // }, 20000);
     }
 
@@ -51,38 +51,58 @@ class Record extends React.Component<any, any> {
                 data: this.state.recordVideo.blob,
                 id: Math.floor(Math.random() * 90000) + 10000,
             };
-            console.log(4);
             var fileName = getFileName();
-            
-            var file = new File([this.state.recordVideo.getBlob()], fileName, {
-                type: 'video/webm'
-            });
 
-            RecordRTC.invokeSaveAsDialog(file, file.name);
-            console.log(5);
-            this.setState( {recording: false});
+            var file = new File([this.state.recordVideo.getBlob()], fileName, {
+                type: 'video/webm',
+            });
+            getSeekableBlob(this.state.recordVideo.getBlob(), function(seekableBlob){
+                invokeSaveAsDialog(seekableBlob);
+            })
+            this.setState({ recording: false });
         });
-        
     }
 
     render(): JSX.Element {
-
-        if (this.state.recording == true){
+        if (this.state.recording == true) {
             return (
                 <div className='Record'>
-                    <button disabled={true} onClick={this.startRecord} id='startButton'>Start Record</button>
-                    <button disabled={false} onClick={this.stopRecord} id='stopButton'>Stop Record</button>
+                    <button
+                        disabled={true}
+                        onClick={this.startRecord}
+                        id='startButton'
+                    >
+                        Start Record
+                    </button>
+                    <button
+                        disabled={false}
+                        onClick={this.stopRecord}
+                        id='stopButton'
+                    >
+                        Stop Record
+                    </button>
                 </div>
             );
-        }else{
+        } else {
             return (
                 <div className='Record'>
-                    <button disabled={false} onClick={this.startRecord} id='startButton'>Start Record</button>
-                    <button disabled={true} onClick={this.stopRecord} id='stopButton'>Stop Record</button>
+                    <button
+                        disabled={false}
+                        onClick={this.startRecord}
+                        id='startButton'
+                    >
+                        Start Record
+                    </button>
+                    <button
+                        disabled={true}
+                        onClick={this.stopRecord}
+                        id='stopButton'
+                    >
+                        Stop Record
+                    </button>
                 </div>
             );
         }
-        
     }
 }
 

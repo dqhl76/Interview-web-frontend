@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import './index.css';
 import App from './App';
-import Record from './ScreenCatch/Record'
+import Record from './ScreenCatch/Record';
 import Editor from './Editor/editor';
 import reportWebVitals from './reportWebVitals';
 
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <Record />
-        <Editor/>
+        <Editor />
     </React.StrictMode>,
 );
 
