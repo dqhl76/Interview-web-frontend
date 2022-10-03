@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './styles.css'
+
 import CodeMirror, { UseCodeMirror } from '@uiw/react-codemirror';
 import { LanguageName, loadLanguage } from '@uiw/codemirror-extensions-langs';
 import { xcodeLight, xcodeDark } from '@uiw/codemirror-theme-xcode';
@@ -11,6 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Button } from '@mui/material';
 import axios from 'axios';
+
 
 class Editor extends React.Component {
     private editor = React.createRef<any>();
@@ -65,9 +68,9 @@ class Editor extends React.Component {
 
     render() {
         return (
-            <>
-                <Box sx={{ minWidth: 120 }}>
-                    <FormControl fullWidth>
+            <div>
+                <Box sx={{ minWidth: 120 }} className='select-language'>
+                    <FormControl size="small">
                         <InputLabel id='demo-simple-select-label'>
                             Language
                         </InputLabel>
@@ -94,15 +97,17 @@ class Editor extends React.Component {
                 <CodeMirror
                     ref={this.editor}
                     value=''
-                    height='400px'
+                    height='600px'
+                    width='800px'
                     theme={xcodeLight}
                     extensions={[
                         loadLanguage(this.state.language as LanguageName)!,
                     ]}
                     onChange={this.handleEditorChange}
+                    className="code-block"
                 />
-                <Button onClick={this.handleSubmit}> Run </Button>
-            </>
+                <Button onClick={this.handleSubmit} className="submit"> Run </Button>
+            </div>
         );
     }
 }

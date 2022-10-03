@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
+import './Record.css'
 import RecordRTC, { getSeekableBlob, invokeSaveAsDialog } from 'recordrtc';
 import { captureUserMedia, getFileName } from './RecordFunction';
 
