@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
 import React from 'react';
+import './Record.css';
 import RecordRTC, { getSeekableBlob, invokeSaveAsDialog } from 'recordrtc';
 import { captureUserMedia, getFileName } from './RecordFunction';
 
@@ -28,10 +28,9 @@ class Record extends React.Component<any, any> {
 
     startRecord() {
         captureUserMedia((stream: any) => {
-            this.state = {
-                recordVideo: new RecordRTC(stream, { type: 'video' }),
-                src: null,
-            };
+            this.setState({ recordVideo: new RecordRTC(stream, { type: 'video' }),
+            src: null,
+            })
             console.log(this.state.recordVideo);
             this.state.recordVideo.startRecording();
             console.log(3);
@@ -67,7 +66,7 @@ class Record extends React.Component<any, any> {
     }
 
     render(): JSX.Element {
-        if (this.state.recording == true) {
+        if (this.state.recording === true) {
             return (
                 <div className='Record'>
                     <button
