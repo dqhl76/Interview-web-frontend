@@ -1,15 +1,15 @@
-.code-block{
-    position:relative;
-    left:20px;
-    top:50px;
+.code-block {
+    position: relative;
+    left: 20px;
+    top: 50px;
 }
-.submit{
+.submit {
     position: relative;
     left: 30px;
     top: 50px;
 }
 
-.select-language{
+.select-language {
     position: relative;
     left: 20px;
     top: 40px;
