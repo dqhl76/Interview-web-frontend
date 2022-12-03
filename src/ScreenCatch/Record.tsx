@@ -28,9 +28,10 @@ class Record extends React.Component<any, any> {
 
     startRecord() {
         captureUserMedia((stream: any) => {
-            this.setState({ recordVideo: new RecordRTC(stream, { type: 'video' }),
-            src: null,
-            })
+            this.state = {
+                recordVideo: new RecordRTC(stream, { type: 'video' }),
+                src: null,
+            };
             console.log(this.state.recordVideo);
             this.state.recordVideo.startRecording();
             console.log(3);
