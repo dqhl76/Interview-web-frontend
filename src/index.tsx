@@ -5,6 +5,7 @@ import './index.css';
 import Record from './ScreenCatch/Record';
 import Editor from './Editor/editor';
 import reportWebVitals from './reportWebVitals';
+import Webrtc from './Webrtc/Webrtc';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
@@ -13,6 +14,7 @@ root.render(
     <React.StrictMode>
         <Record />
         <Editor />
+        <Webrtc />
     </React.StrictMode>,
 );
 
