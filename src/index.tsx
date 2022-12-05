@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
+        <Webrtc />
         <Record />
         <Editor />
-        <Webrtc />
     </React.StrictMode>,
 );
 
