@@ -30,7 +30,7 @@ class Webrtc extends React.Component<any, any> {
 
         var connection = new RTCMultiConnection();
 
-        connection.socketURL = 'http://182.92.215.108:9001/';
+        connection.socketURL = 'https://webrtc.realdqhl.com';
 
         connection.session = {
             audio : true,
