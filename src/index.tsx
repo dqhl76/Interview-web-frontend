@@ -4,15 +4,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Record from './ScreenCatch/Record';
 import Editor from './Editor/editor';
+import Login from "./Login/Login";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
+import Container from "react-bootstrap/Container";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
 );
 root.render(
     <React.StrictMode>
-        <Record />
-        <Editor />
+        {/*<Record />*/}
+        {/*<Editor />*/}
+
+        <Login/>
+
     </React.StrictMode>,
 );
 
