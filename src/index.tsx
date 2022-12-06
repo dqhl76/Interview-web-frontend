@@ -48,7 +48,7 @@ const router = createBrowserRouter(
         <Route path='/' element={<Header />}>
             <Route index element={<Login />} />
             <Route path='/home' loader={loader} element={<GetRooms />} />
-            <Route path='/room/:id' element={<Editor />} />
+            <Route path='/room/:id' element={<><Editor /><Webrtc /></>} />
         </Route>,
     ),
 );
