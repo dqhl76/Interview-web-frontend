@@ -11,11 +11,11 @@
     border-radius: 10px;
 }
 .cr {
-    /* background: white; */
+    background: white;
     padding: 2%;
     position: absolute;
     top: 0;
-    transform: translate(2%, 0%);
+    transform: translate(60%, 25%);
 
     z-index: 1000;
     /*display: none;*/
@@ -36,7 +36,7 @@
     max-width: 570px;
     box-shadow: 2px 2px 5px rgba(28, 27, 27, 0.72);
     margin: 60% 5%;
-    margin-top: 180%;
+    margin-top: 60%;
     border-radius: 10px;
 }
 
