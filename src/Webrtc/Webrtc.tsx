@@ -4,8 +4,11 @@ import RTCMultiConnection from 'rtcmulticonnection';
 import './Webrtc.css';
 import ReactDOM from 'react-dom';
 import { Console } from 'console';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 interface Props {}
+
 class Webrtc extends React.Component<any, any> {
     constructor(props: Props) {
         super(props);
@@ -52,21 +55,23 @@ class Webrtc extends React.Component<any, any> {
 
     render() {
         return (
-            <div className='Webrtc'>
-                <div id='videoContainer'></div>
-                <input
-                    type='text'
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                />
-                <h4>{this.state.value}</h4>
-                <button
-                    disabled={this.state.disable}
-                    onClick={this.startConnection}
-                >
-                    Connect
-                </button>
-            </div>
+            <Container fluid className='Webrtc'>
+                <div className={'myin myinput text-center'}>
+                    <Button
+                        disabled={this.state.disable}
+                        onClick={this.startConnection}
+                    >
+                        Connect
+                    </Button>
+                </div>
+                <div id='videoContainer' className={'videoContainer'}></div>
+                {/*<input*/}
+                {/*    type='text'*/}
+                {/*    value={this.state.value}*/}
+                {/*    onChange={this.handleChange}*/}
+                {/*/>*/}
+                {/*<h4>{this.state.value}</h4>*/}
+            </Container>
         );
     }
 }

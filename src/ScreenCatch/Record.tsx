@@ -2,6 +2,7 @@ import React from 'react';
 import './Record.css';
 import RecordRTC, { getSeekableBlob, invokeSaveAsDialog } from 'recordrtc';
 import { captureUserMedia, getFileName } from './RecordFunction';
+import Button from 'react-bootstrap/Button';
 
 interface Props {}
 class Record extends React.Component<any, any> {
@@ -69,40 +70,40 @@ class Record extends React.Component<any, any> {
     render(): JSX.Element {
         if (this.state.recording === true) {
             return (
-                <div className='Record'>
-                    <button
+                <div className='Record btn-group'>
+                    <Button
                         disabled={true}
                         onClick={this.startRecord}
                         id='startButton'
                     >
                         Start Record
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         disabled={false}
                         onClick={this.stopRecord}
                         id='stopButton'
                     >
                         Stop Record
-                    </button>
+                    </Button>
                 </div>
             );
         } else {
             return (
-                <div className='Record'>
-                    <button
+                <div className='Record btn-group'>
+                    <Button
                         disabled={false}
                         onClick={this.startRecord}
                         id='startButton'
                     >
                         Start Record
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         disabled={true}
                         onClick={this.stopRecord}
                         id='stopButton'
                     >
                         Stop Record
-                    </button>
+                    </Button>
                 </div>
             );
         }

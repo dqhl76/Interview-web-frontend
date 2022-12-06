@@ -1,0 +1,36 @@
+.ide1 {
+    position: relative;
+    height: 60%;
+    width: 100%;
+}
+.result {
+    position: relative;
+    height: 20%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.f2f {
+    position: relative;
+    height: 30%;
+    width: 100%;
+    overflow: scroll;
+}
+.board {
+    position: relative;
+    height: 35%;
+    width: 100%;
+    overflow: scroll;
+}
+.command {
+    position: relative;
+    height: 10%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.met {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
