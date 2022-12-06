@@ -3,12 +3,11 @@ import io from 'socket.io';
 import RTCMultiConnection from 'rtcmulticonnection';
 import './Webrtc.css';
 import ReactDOM from 'react-dom';
-import {Console} from 'console';
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+import { Console } from 'console';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
-interface Props {
-}
+interface Props {}
 
 class Webrtc extends React.Component<any, any> {
     constructor(props: Props) {
@@ -23,11 +22,11 @@ class Webrtc extends React.Component<any, any> {
     }
 
     handleChange(event: { target: { value: any } }) {
-        this.setState({value: event.target.value});
+        this.setState({ value: event.target.value });
     }
 
     startConnection() {
-        this.setState({disable: true});
+        this.setState({ disable: true });
         console.log('start connection');
         console.log(this.state.value);
 
@@ -65,16 +64,13 @@ class Webrtc extends React.Component<any, any> {
                         Connect
                     </Button>
                 </div>
-                <div id='videoContainer' className={"videoContainer"}>
-
-                </div>
+                <div id='videoContainer' className={'videoContainer'}></div>
                 {/*<input*/}
                 {/*    type='text'*/}
                 {/*    value={this.state.value}*/}
                 {/*    onChange={this.handleChange}*/}
                 {/*/>*/}
                 {/*<h4>{this.state.value}</h4>*/}
-
             </Container>
         );
     }

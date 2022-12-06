@@ -14,8 +14,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Alert, Button } from '@mui/material';
 import { Input } from '@mui/material';
 import axios from 'axios';
-import Container from "react-bootstrap/Container";
-import {Row} from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
+import { Row } from 'react-bootstrap';
 
 class Editor extends React.Component {
     private editor = React.createRef<any>();
@@ -136,12 +136,11 @@ class Editor extends React.Component {
                         </Select>
                     </FormControl>
                 </Row>
-                <Row >
+                <Row>
                     <CodeMirror
                         ref={this.editor}
                         value=''
                         height='400px'
-
                         theme={xcodeLight}
                         extensions={[
                             loadLanguage(this.state.language as LanguageName)!,
@@ -152,7 +151,12 @@ class Editor extends React.Component {
                 </Row>
 
                 <Row className={'su'}>
-                    <Button onClick={this.handleSubmit} className='submit' variant={'contained'} sx={{maxWidth:30}}>
+                    <Button
+                        onClick={this.handleSubmit}
+                        className='submit'
+                        variant={'contained'}
+                        sx={{ maxWidth: 30 }}
+                    >
                         {' '}
                         Run{' '}
                     </Button>
@@ -164,7 +168,9 @@ class Editor extends React.Component {
                             <Input
                                 multiline={true}
                                 onChange={(event) =>
-                                    this.setState({ testInput: event.target.value })
+                                    this.setState({
+                                        testInput: event.target.value,
+                                    })
                                 }
                             />
                         </label>
@@ -194,7 +200,6 @@ class Editor extends React.Component {
                         </Row>
                     </div>
                 </Row>
-
             </Container>
         );
     }

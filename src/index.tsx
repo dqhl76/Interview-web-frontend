@@ -20,7 +20,7 @@ import Webrtc from './Webrtc/Webrtc';
 import Container from 'react-bootstrap/Container';
 import Header from './Header/Header';
 import Alert from 'react-bootstrap/Alert';
-import Meeting from "./Meeting/Meeting";
+import Meeting from './Meeting/Meeting';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
