@@ -6,30 +6,37 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Editor from "../Editor/editor";
-import { Col, Row } from "react-bootstrap";
-import {Link, Outlet, useNavigate} from 'react-router-dom'
-import "./header.css"
+import Editor from '../Editor/editor';
+import { Col, Row } from 'react-bootstrap';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import './header.css';
 
 const Header: React.FC = () => {
     let navigate = useNavigate();
     const handleClick = () => {
-        navigate('/home')
-    }
+        navigate('/home');
+    };
+    
     return (
         <Container fluid className='header'>
-        <Navbar bg="dark" variant="dark">
-            <Container className="container-sm">
-                <Navbar.Brand href="javascript:void(0)" onClick={handleClick}>Online Interview</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="#editor">Editor</Nav.Link>
-                    <Nav.Link href="#login" className="active">login</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
-        <Outlet />
+            <Navbar bg='dark' variant='dark'>
+                <Container className='container-sm'>
+                    <Navbar.Brand
+                        href='javascript:void(0)'
+                        onClick={handleClick}
+                    >
+                        Online Interview
+                    </Navbar.Brand>
+                    <Nav className='me-auto'>
+                        <Nav.Link href='#login' className='active'>
+                            login
+                        </Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+            <Outlet />
         </Container>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
