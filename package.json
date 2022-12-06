@@ -20,6 +20,7 @@
         "react": "^18.2.0",
         "react-bootstrap": "^2.6.0",
         "react-dom": "^18.2.0",
+        "react-router": "^6.4.4",
         "react-scripts": "5.0.1",
         "rtcmulticonnection": "^3.7.1",
         "socket.io": "^4.5.4",

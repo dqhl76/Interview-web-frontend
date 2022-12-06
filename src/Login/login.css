@@ -1,0 +1,20 @@
+
+.row{
+    box-shadow: 2px 2px 5px rgba(28, 27, 27, 0.72);
+    padding: 2%;
+    border-radius: 10px ;
+
+}
+.log_con{
+    padding: 10% 30%;
+    margin-right: auto!important;
+    margin-left: auto!important;
+}
+.bord{
+    padding: 0!important;
+}
+.container{
+    margin-left:1% !important;
+    margin-right:1% !important;
+}
+
