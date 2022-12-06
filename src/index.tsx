@@ -13,7 +13,6 @@ import Login from './Login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import GetRooms from './Room/getRooms';
-import NavbarForAll from './Navbar';
 import CreateRoom from './Room/CreateRoom';
 import Join from './Room/Join';
 import Webrtc from './Webrtc/Webrtc';

@@ -95,7 +95,14 @@ function GetRooms() {
                                 'text-center d-flex justify-content-center align-items-center'
                             }
                         >
-                            <Button variant={'primary'}>Get In</Button>
+                            <Button
+                                variant={'primary'}
+                                onClick={() => {
+                                    navigate('../room/' + room.room_id);
+                                }}
+                            >
+                                Get In
+                            </Button>
                         </Col>
                     </Row>
                 </Container>
