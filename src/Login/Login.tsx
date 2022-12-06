@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import React, { FormEventHandler, useState } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -10,8 +11,15 @@ import Editor from '../Editor/editor';
 import { Col, Row } from 'react-bootstrap';
 import './login.css';
 
-class Login extends React.Component {
-    render() {
+import { useNavigate} from 'react-router-dom';
+
+const Login: React.FC  = ()=>{
+    let navigate = useNavigate();
+        const [isLogin, setLogin] = useLocalStorage('token',null)
+        if(isLogin === null){
+            navigate('/home');
+        }
+    
         return (
             <Container fluid className='bord'>
                 <div className='sm log_con'>
@@ -103,7 +111,7 @@ class Login extends React.Component {
                 </div>
             </Container>
         );
-    }
+
 }
 
 export default Login;
