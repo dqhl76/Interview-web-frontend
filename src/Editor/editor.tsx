@@ -12,11 +12,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Button } from '@mui/material';
+import { Input } from '@mui/material';
 import axios from 'axios';
 
 class Editor extends React.Component {
     private editor = React.createRef<any>();
-    state = { code: '', language: 'cpp', languageId: 54 };
+    state = { code: '', language: 'cpp', languageId: 54, testInput: '', expectedTestOutput: '', testResult: '' };
     handleEditorChange = (value: String) => {
         this.setState({ code: value });
     };
@@ -45,20 +46,35 @@ class Editor extends React.Component {
         await axios({
             method: 'post',
             url: 'https://oj.realdqhl.com/submissions',
-            params: { base64_encoded: 'false', wait: 'true' },
+            params: { base64_encoded: 'false',
+                wait: 'true' ,
+                stdin: this.state.testInput,
+                expected_output: this.state.expectedTestOutput,
+                cpu_time_limit: 2,
+                cpu_extra_time: 0.5,
+                wall_time_limit: 5,
+                memory_limit: 64000,
+                stack_limit: 64000,
+            },
             headers: {
                 'Content-Type': 'application/json',
                 'X-Auth-Token': 'X-Auth-Token',
             },
             data: postData,
         })
-            .then(function (response) {
+            .then((response) => {
                 console.log(response);
                 alert(
                     response.data.status.description +
                         ' ' +
-                        response.data.stdout,
+                        response.data.stdout + ' ' +
+                        response.data.stderr
                 );
+                // update textResult
+                this.setState({testResult: response.data.status.description});
+
+
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -109,6 +125,27 @@ class Editor extends React.Component {
                     {' '}
                     Run{' '}
                 </Button>
+                <div
+                className={"test-input-box"}>
+                    <label className={"test-input-label"}>
+                        Test input:
+                        <Input multiline={true}
+                               onChange={(event) => this.setState({testInput: event.target.value})} />
+                    </label>
+                    <br />
+                    <label className={"test-output-label"}>
+                        Expected test output:
+                        <Input multiline={true}
+                               onChange={(event) => this.setState({expectedTestOutput: event.target.value})} />
+                    </label>
+                    <br />
+                    <label>
+                        Run Result:
+                        <Input multiline={true}
+                               value={this.state.testResult}
+                               readOnly={true} />
+                    </label>
+                </div>
             </div>
         );
     }
