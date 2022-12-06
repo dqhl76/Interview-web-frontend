@@ -10,6 +10,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Editor from '../Editor/editor';
 import { Col, Row } from 'react-bootstrap';
 import './login.css';
+
 import { useNavigate} from 'react-router-dom';
 
 const Login: React.FC  = ()=>{
@@ -110,7 +111,7 @@ const Login: React.FC  = ()=>{
                 </div>
             </Container>
         );
-    
+
 }
 
 export default Login;

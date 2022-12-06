@@ -12,6 +12,11 @@ import Editor from './Editor/editor';
 import Login from './Login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
+import Container from 'react-bootstrap/Container';
+import GetRooms from './Room/getRooms';
+import NavbarForAll from './Navbar';
+import CreateRoom from './Room/CreateRoom';
+import Join from './Room/Join';
 import Webrtc from './Webrtc/Webrtc';
 import Container from 'react-bootstrap/Container';
 import Header from './Header/Header';
@@ -32,6 +37,7 @@ const router = createBrowserRouter(
 
 root.render(
     <React.StrictMode>
+
         {/* <Webrtc /> */}
         {/*<Record />*/}
         {/*<Editor />*/}
