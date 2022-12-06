@@ -11,13 +11,23 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Button } from '@mui/material';
+import {Alert, Button} from '@mui/material';
 import { Input } from '@mui/material';
 import axios from 'axios';
 
 class Editor extends React.Component {
     private editor = React.createRef<any>();
-    state = { code: '', language: 'cpp', languageId: 54, testInput: '', expectedTestOutput: '', testResult: '' };
+    private alert = React.createRef<any>();
+    state = {
+        code: '',
+        language: 'cpp',
+        languageId: 54,
+        testInput: '',
+        expectedTestOutput: '',
+        testResult: 'Hit run to check',
+        testSuccess: true,
+        isResponse: false,
+    };
     handleEditorChange = (value: String) => {
         this.setState({ code: value });
     };
@@ -43,11 +53,13 @@ class Editor extends React.Component {
             source_code: this.state.code,
             language_id: this.state.languageId,
         };
+        this.setState({ isResponse: false });
         await axios({
             method: 'post',
             url: 'https://oj.realdqhl.com/submissions',
-            params: { base64_encoded: 'false',
-                wait: 'true' ,
+            params: {
+                base64_encoded: 'false',
+                wait: 'true',
                 stdin: this.state.testInput,
                 expected_output: this.state.expectedTestOutput,
                 cpu_time_limit: 2,
@@ -64,24 +76,35 @@ class Editor extends React.Component {
         })
             .then((response) => {
                 console.log(response);
-                alert(
-                    response.data.status.description +
-                        ' ' +
-                        response.data.stdout + ' ' +
-                        response.data.stderr
-                );
+                this.setState({ isResponse: true });
+                // alert(
+                //     response.data.status.description +
+                //         ' ' +
+                //         response.data.stdout +
+                //         ' ' +
+                //         response.data.stderr,
+                // );
                 // update textResult
-                this.setState({testResult: response.data.status.description});
-
-
-
+                this.setState({ testResult: response.data.status.description });
+                // update alert severity
+                if (response.data.status.description === 'Accepted') {
+                    this.setState({ testSuccess: true });
+                } else {
+                    this.setState({ testSuccess: false });
+                }
             })
             .catch(function (error) {
                 console.log(error);
             });
+        await new Promise(resolve => setTimeout(resolve, 4000));
+        if (!this.state.isResponse) {
+            this.setState({testResult: 'Run failed. Check your code and rerun.'});
+            this.setState({testSuccess: false});
+        }
     };
 
     render() {
+        // @ts-ignore
         return (
             <div>
                 <Box sx={{ minWidth: 120 }} className='select-language'>
@@ -125,25 +148,34 @@ class Editor extends React.Component {
                     {' '}
                     Run{' '}
                 </Button>
-                <div
-                className={"test-input-box"}>
-                    <label className={"test-input-label"}>
+                <div className={'test-input-box'}>
+                    <label className={'test-input-label'}>
                         Test input:
-                        <Input multiline={true}
-                               onChange={(event) => this.setState({testInput: event.target.value})} />
+                        <Input
+                            multiline={true}
+                            onChange={(event) =>
+                                this.setState({ testInput: event.target.value })
+                            }
+                        />
                     </label>
                     <br />
-                    <label className={"test-output-label"}>
+                    <label className={'test-output-label'}>
                         Expected test output:
-                        <Input multiline={true}
-                               onChange={(event) => this.setState({expectedTestOutput: event.target.value})} />
+                        <Input
+                            multiline={true}
+                            onChange={(event) =>
+                                this.setState({
+                                    expectedTestOutput: event.target.value,
+                                })
+                            }
+                        />
                     </label>
                     <br />
                     <label>
                         Run Result:
-                        <Input multiline={true}
-                               value={this.state.testResult}
-                               readOnly={true} />
+                        {/*make the severity danger when not "Accepted"*/}
+                        <Alert ref={this.alert}
+                            severity={this.state.testSuccess ? 'success':'error'}>{this.state.testResult}</Alert>
                     </label>
                 </div>
             </div>
