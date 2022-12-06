@@ -16,15 +16,12 @@ const Header: React.FC = () => {
     const handleClick = () => {
         navigate('/home');
     };
-    
+
     return (
         <Container fluid className='header'>
             <Navbar bg='dark' variant='dark'>
                 <Container className='container-sm'>
-                    <Navbar.Brand
-                        href='javascript:void(0)'
-                        onClick={handleClick}
-                    >
+                    <Navbar.Brand href='#' onClick={handleClick}>
                         Online Interview
                     </Navbar.Brand>
                     <Nav className='me-auto'>
