@@ -14,6 +14,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Alert, Button } from '@mui/material';
 import { Input } from '@mui/material';
 import axios from 'axios';
+import Container from "react-bootstrap/Container";
+import {Row} from "react-bootstrap";
 
 class Editor extends React.Component {
     private editor = React.createRef<any>();
@@ -108,8 +110,8 @@ class Editor extends React.Component {
     render() {
         // @ts-ignore
         return (
-            <div>
-                <Box sx={{ minWidth: 120 }} className='select-language'>
+            <Container>
+                <Row sx={{ minWidth: 120 }} className='select-language'>
                     <FormControl size='small'>
                         <InputLabel id='demo-simple-select-label'>
                             Language
@@ -133,60 +135,67 @@ class Editor extends React.Component {
                             <MenuItem value={'php'}>PHP (7.4.1)</MenuItem>
                         </Select>
                     </FormControl>
-                </Box>
-                <CodeMirror
-                    ref={this.editor}
-                    value=''
-                    height='600px'
-                    width='800px'
-                    theme={xcodeLight}
-                    extensions={[
-                        loadLanguage(this.state.language as LanguageName)!,
-                    ]}
-                    onChange={this.handleEditorChange}
-                    className='code-block'
-                />
-                <Button onClick={this.handleSubmit} className='submit'>
-                    {' '}
-                    Run{' '}
-                </Button>
-                <div className={'test-input-box'}>
-                    <label className={'test-input-label'}>
-                        Test input:
-                        <Input
-                            multiline={true}
-                            onChange={(event) =>
-                                this.setState({ testInput: event.target.value })
-                            }
-                        />
-                    </label>
-                    <br />
-                    <label className={'test-output-label'}>
-                        Expected test output:
-                        <Input
-                            multiline={true}
-                            onChange={(event) =>
-                                this.setState({
-                                    expectedTestOutput: event.target.value,
-                                })
-                            }
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Run Result:
-                        {/*make the severity danger when not "Accepted"*/}
-                        <Alert
-                            ref={this.alert}
-                            severity={
-                                this.state.testSuccess ? 'success' : 'error'
-                            }
-                        >
-                            {this.state.testResult}
-                        </Alert>
-                    </label>
-                </div>
-            </div>
+                </Row>
+                <Row >
+                    <CodeMirror
+                        ref={this.editor}
+                        value=''
+                        height='400px'
+
+                        theme={xcodeLight}
+                        extensions={[
+                            loadLanguage(this.state.language as LanguageName)!,
+                        ]}
+                        onChange={this.handleEditorChange}
+                        className='code-block'
+                    />
+                </Row>
+
+                <Row className={'su'}>
+                    <Button onClick={this.handleSubmit} className='submit' variant={'contained'} sx={{maxWidth:30}}>
+                        {' '}
+                        Run{' '}
+                    </Button>
+                </Row>
+                <Row className={'su'}>
+                    <div className={'test-input-box'}>
+                        <label className={'test-input-label'}>
+                            Test input:
+                            <Input
+                                multiline={true}
+                                onChange={(event) =>
+                                    this.setState({ testInput: event.target.value })
+                                }
+                            />
+                        </label>
+                        <br />
+                        <label className={'test-output-label'}>
+                            Expected test output:
+                            <Input
+                                multiline={true}
+                                onChange={(event) =>
+                                    this.setState({
+                                        expectedTestOutput: event.target.value,
+                                    })
+                                }
+                            />
+                        </label>
+                        <br />
+                        <Row className={'su'}>
+                            {/*make the severity danger when not "Accepted"*/}
+                            <Alert
+                                ref={this.alert}
+                                severity={
+                                    this.state.testSuccess ? 'success' : 'error'
+                                }
+                            >
+                                {this.state.testResult}
+                            </Alert>
+                        </Row>
+                    </div>
+                </Row>
+
+            </Container>
         );
     }
 }

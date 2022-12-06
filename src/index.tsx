@@ -20,6 +20,7 @@ import Webrtc from './Webrtc/Webrtc';
 import Container from 'react-bootstrap/Container';
 import Header from './Header/Header';
 import Alert from 'react-bootstrap/Alert';
+import Meeting from "./Meeting/Meeting";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
@@ -48,7 +49,7 @@ const router = createBrowserRouter(
         <Route path='/' element={<Header />}>
             <Route index element={<Login />} />
             <Route path='/home' loader={loader} element={<GetRooms />} />
-            <Route path='/room/:id' element={<Editor />} />
+            <Route path='/room/:id' element={<Meeting />} />
         </Route>,
     ),
 );
