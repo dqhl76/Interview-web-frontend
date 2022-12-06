@@ -7,6 +7,7 @@ import Editor from './Editor/editor';
 import Login from "./Login/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
+import Webrtc from './Webrtc/Webrtc';
 import Container from "react-bootstrap/Container";
 
 const root = ReactDOM.createRoot(
@@ -14,11 +15,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
+        <Webrtc />
+        <Record />
+        <Editor />
         {/*<Record />*/}
         {/*<Editor />*/}
 
         <Login/>
-
     </React.StrictMode>,
 );
 
