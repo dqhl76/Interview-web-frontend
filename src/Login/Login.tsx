@@ -20,15 +20,7 @@ class Login extends React.Component {
         return (
 
                 <Container fluid className="bord">
-                    <Navbar bg="dark" variant="dark">
-                        <Container className="container-sm">
-                            <Navbar.Brand href="#home">OnlineCode</Navbar.Brand>
-                            <Nav className="me-auto">
-                                <Nav.Link href="#editor">Editor</Nav.Link>
-                                <Nav.Link href="#login" className="active">login</Nav.Link>
-                            </Nav>
-                        </Container>
-                    </Navbar>
+                 
                     <div className="sm log_con">
                         <Row className="justify-content-sm-center">
                             <Col>
