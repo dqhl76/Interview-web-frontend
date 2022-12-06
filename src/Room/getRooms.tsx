@@ -19,6 +19,7 @@ interface RoomItem {
     created_email: string;
     interviewed_email: string;
 }
+
 interface Room {
     data: RoomItem[];
     len: number;
@@ -63,29 +64,28 @@ function GetRooms() {
                                     Interview With: {room.interviewed_email}
                                 </h5>
                             </Row>
-
+                            <Row>
+                                <h6 className={'text-muted text-start'}>
+                                    Created by: {room.created_email}
+                                </h6>
+                            </Row>
                             <Row>
                                 <Col md={6} xs={12}>
                                     <h6 className={'text-muted'}>
                                         {' '}
                                         Start on:{' '}
+                                    </h6>
+                                    <p className={'text-sm-start text-muted'}>
                                         {room.start
                                             .substring(0, 16)
                                             .replace('T', ' ')}
-                                    </h6>
-                                    <p
-                                        className={'text-sm-start text-muted'}
-                                    ></p>
+                                    </p>
                                 </Col>
                                 <Col md={6} xs={12}>
-                                    <h6 className={'text-muted'}>
-                                        Duration: {room.duration}
-                                    </h6>
-                                </Col>
-                                <Col md={6} xs={12}>
-                                    <h6 className={'text-muted'}>
-                                        Created by: {room.created_email}
-                                    </h6>
+                                    <h6 className={'text-muted'}>Duration:</h6>
+                                    <p className={'text-muted text-sm-start'}>
+                                        {room.duration}min
+                                    </p>
                                 </Col>
                             </Row>
                         </Col>
@@ -112,7 +112,7 @@ function GetRooms() {
                 <Col
                     lg={{ span: 3, offset: 3 }}
                     sm={12}
-                    className={'align-items-end'}
+                    className={'align-items-center'}
                 >
                     <div className={'option'}>
                         <Row>
