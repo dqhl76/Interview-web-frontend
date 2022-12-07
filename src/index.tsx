@@ -13,7 +13,6 @@ import Login from './Login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import GetRooms from './Room/getRooms';
-import NavbarForAll from './Navbar';
 import CreateRoom from './Room/CreateRoom';
 import Join from './Room/Join';
 import Webrtc from './Webrtc/Webrtc';
@@ -49,7 +48,7 @@ const router = createBrowserRouter(
         <Route path='/' element={<Header />}>
             <Route index element={<Login />} />
             <Route path='/home' loader={loader} element={<GetRooms />} />
-            <Route path='/room/:id' element={<Meeting />} />
+            <Route path='/room/:id' loader={(id)=>{return id}} element={<Meeting />} />
         </Route>,
     ),
 );

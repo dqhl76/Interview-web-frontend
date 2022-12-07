@@ -12,21 +12,20 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './header.css';
 
 const Header: React.FC = () => {
-    let navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/home');
-    };
-
+    let url = './';
+    let user = localStorage.getItem('user');
+    if (user == null) {
+        user = 'Login';
+        url = './';
+    }
     return (
         <Container fluid className='header'>
             <Navbar bg='dark' variant='dark'>
-                <Container className='container-sm'>
-                    <Navbar.Brand href='#' onClick={handleClick}>
-                        Online Interview
-                    </Navbar.Brand>
-                    <Nav className='me-auto'>
-                        <Nav.Link href='#login' className='active'>
-                            login
+                <Container>
+                    <Navbar.Brand href='./home'>Online Interview</Navbar.Brand>
+                    <Nav className='justify-content-end'>
+                        <Nav.Link href={url} className='active'>
+                            {user}
                         </Nav.Link>
                     </Nav>
                 </Container>

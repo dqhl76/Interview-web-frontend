@@ -16,8 +16,14 @@ import { Input } from '@mui/material';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import { Row } from 'react-bootstrap';
+import io from 'socket.io-client'
+
+let url = window.location.href
+let paras = url.split('/')
+const socket = io('https://socket.realdqhl.com?room_id='+paras.pop());
 
 class Editor extends React.Component {
+
     private editor = React.createRef<any>();
     private alert = React.createRef<any>();
     state = {
@@ -29,10 +35,27 @@ class Editor extends React.Component {
         testResult: 'Hit run to check',
         testSuccess: true,
         isResponse: false,
+        isConnected: socket.connected
     };
+
+    componentDidMount() {
+        socket.on('connect', () => {
+            this.setState({isConnected:true});
+        });
+        socket.on('message',(data)=>{
+            console.log(data)
+            this.setState({code:data})
+        })
+    }
+
+
     handleEditorChange = (value: String) => {
         this.setState({ code: value });
+        if(value != this.state.code){
+            socket.emit('message',value)
+        }
     };
+
     handleChange = (event: SelectChangeEvent) => {
         this.setState({ language: event.target.value as string });
         if (event.target.value === 'cpp') {
@@ -139,7 +162,7 @@ class Editor extends React.Component {
                 <Row>
                     <CodeMirror
                         ref={this.editor}
-                        value=''
+                        value={this.state.code}
                         height='400px'
                         theme={xcodeLight}
                         extensions={[
