@@ -15,6 +15,7 @@ const baseURL =
 
 const Login: React.FC = () => {
     const navigate = useNavigate();
+
     const [key, setKey] = useState<string>('login');
     const [registerEmail, setRegisterEmail] = useState<string>('');
     const [registerPass, setRegisterPass] = useState<string>('');
@@ -61,7 +62,8 @@ const Login: React.FC = () => {
                 setVariantLogin('success');
                 setErrorLoginMessage('Login success');
                 localStorage.setItem('token', response.data.token);
-                setTimeout(() => navigate('/home'), 1500);
+                localStorage.setItem('user', loginEmail);
+                setTimeout(() => navigate('/home'), 500);
             })
             .catch((error) => {
                 if (error.response.status === 422) {

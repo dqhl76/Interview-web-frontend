@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { eventListeners } from '@popperjs/core';
 import Row from 'react-bootstrap/esm/Row';
-import {Col} from "react-bootstrap";
+import { Col } from 'react-bootstrap';
 
 interface Props {
     room_id: string;
@@ -27,7 +27,12 @@ class Webrtc extends React.Component<Props, State> {
             value: props.room_id,
             disable: false,
 
-            video: <Row><Col md={6} id={'c1'} className={'text-center'}></Col><Col md={6} id={'c2'} className={'text-center'}></Col></Row>
+            video: (
+                <Row>
+                    <Col md={6} id={'c1'} className={'text-center'}></Col>
+                    <Col md={6} id={'c2'} className={'text-center'}></Col>
+                </Row>
+            ),
         };
         this.startConnection = this.startConnection.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -76,11 +81,11 @@ class Webrtc extends React.Component<Props, State> {
                 if (document.getElementById('video-customer') !== null) {
                     console.log('change id');
                     newVideo.id = 'video-customer2';
-                    newVideo.className='video-customer2'
+                    newVideo.className = 'video-customer2';
                 } else {
                     console.log('change id');
                     newVideo.id = 'video-customer';
-                    newVideo.className='video-customer1'
+                    newVideo.className = 'video-customer1';
                 }
                 newVideo.srcObject = old.srcObject;
                 newVideo.autoplay = true;
@@ -89,23 +94,15 @@ class Webrtc extends React.Component<Props, State> {
                 body.removeEventListener('DOMNodeInserted', (event) => {
                     console.log('remove');
                 });
-                if (document.getElementById('video-customer') !== null){
-                    document
-                        .getElementById('c2')
-                        ?.appendChild(newVideo);
+                if (document.getElementById('video-customer') !== null) {
+                    document.getElementById('c2')?.appendChild(newVideo);
                     body.removeChild(old);
-                }else{
-                    document
-                        .getElementById('c1')
-                        ?.appendChild(newVideo);
+                } else {
+                    document.getElementById('c1')?.appendChild(newVideo);
                     body.removeChild(old);
                 }
-
-
             }
         });
-
-
     }
     render() {
         return (
@@ -119,7 +116,7 @@ class Webrtc extends React.Component<Props, State> {
                     </Button>
                 </div>
                 <div id='videoContainer' className={'videoContainer'}>
-                        {this.state.video}
+                    {this.state.video}
                 </div>
                 {/*<input*/}
                 {/*    type='text'*/}

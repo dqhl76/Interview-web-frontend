@@ -44,9 +44,9 @@ const CreateRoom: React.FC<IPros> = (props) => {
             )
             .then((response) => {
                 console.log(response);
-                if (response.data.status == 'false') {
+                if (response.data.success == false) {
                     setIsAlert(true);
-                    setAlertMessage(response.data.message);
+                    setAlertMessage(response.data.data);
                     setVariant('danger');
                     return;
                 }

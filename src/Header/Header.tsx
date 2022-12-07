@@ -12,11 +12,12 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './header.css';
 
 const Header: React.FC = () => {
-    let url = './';
-    let user = localStorage.getItem('user');
+    const [user, setUser] = useState(localStorage.getItem('user'));
+
+    const [url, setUrl] = useState('./');
     if (user == null) {
-        user = 'Login';
-        url = './';
+        setUser('Login');
+        setUrl('./');
     }
     return (
         <Container fluid className='header'>
