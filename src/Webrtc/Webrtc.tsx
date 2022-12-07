@@ -112,7 +112,7 @@ class Webrtc extends React.Component<Props, State> {
                         disabled={this.state.disable}
                         onClick={this.startConnection}
                     >
-                        Connect
+                        Click to Connect
                     </Button>
                 </div>
                 <div id='videoContainer' className={'videoContainer'}>
