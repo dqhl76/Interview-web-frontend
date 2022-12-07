@@ -19,15 +19,21 @@ function Meeting() {
     const id = loaderData.params.id;
     return (
         <div className={'met'}>
-            <Row>
-                <Col md={6}>
+            <Row className={'metr'}>
+                <Col md={6} className={'metr'}>
                     <Container fluid className={'ide1'}>
                         <Editor room_id={id} />
                     </Container>
+                    {/*<Container fluid className={'score'}>*/}
+                    {/*    <Editor />*/}
+                    {/*</Container>*/}
                 </Col>
-                <Col md={6}>
+                <Col md={6} className={'metr'}>
                     <Container fluid className={'f2f'}>
                         <Webrtc room_id={id} />
+                    </Container>
+                    <Container fluid className={'board'}>
+                        <Editor room_id={id}/>
                     </Container>
                     <Container fluid className={'command  text-center'}>
                         <Record />

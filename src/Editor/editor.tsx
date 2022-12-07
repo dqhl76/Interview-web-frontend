@@ -60,6 +60,7 @@ class Editor extends React.Component<Props, State> {
     private editor = React.createRef<any>();
     private alert = React.createRef<any>();
 
+
     componentDidMount() {
         socket.on('connect', () => {
             this.setState({ isConnected: true });
@@ -186,7 +187,7 @@ class Editor extends React.Component<Props, State> {
                     <CodeMirror
                         ref={this.editor}
                         value={this.state.code}
-                        height='400px'
+                        height='600px'
                         theme={xcodeLight}
                         extensions={[
                             loadLanguage(this.state.language as LanguageName)!,

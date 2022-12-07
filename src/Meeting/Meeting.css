@@ -1,6 +1,6 @@
 .ide1 {
     position: relative;
-    height: 60%;
+    height: 100%;
     width: 100%;
 }
 .result {
@@ -12,13 +12,13 @@
 
 .f2f {
     position: relative;
-    height: 30%;
+    height: 35%;
     width: 100%;
     overflow: scroll;
 }
 .board {
     position: relative;
-    height: 35%;
+    height: 50%;
     width: 100%;
     overflow: scroll;
 }
@@ -30,7 +30,11 @@
 }
 
 .met {
-    position: relative;
+    position: absolute;
     height: 100%;
     width: 100%;
+}
+.metr{
+    position: relative;
+    height: 100%;
 }
