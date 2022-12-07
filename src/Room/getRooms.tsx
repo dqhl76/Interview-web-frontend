@@ -123,7 +123,7 @@ function GetRooms() {
                 >
                     <div className={'option'}>
                         <Row>
-                            <Col md={12} className={'text-center'}>
+                            <Col className={'text-center'}>
                                 <Row className={'justify-content-center mb-2'}>
                                     <Button
                                         className={'create'}
@@ -132,7 +132,7 @@ function GetRooms() {
                                 </Row>
                                 <Row>
                                     <h5 className={'text-muted mb-2'}>
-                                        Create
+                                        Schedule Interview
                                     </h5>
                                 </Row>
                             </Col>

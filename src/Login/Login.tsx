@@ -10,6 +10,8 @@ import './login.css';
 import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
+const baseURL =
+    process.env.REACT_APP_BACKEND_URL || 'https://socket.realdqhl.com';
 
 const Login: React.FC = () => {
     const navigate = useNavigate();
@@ -29,7 +31,7 @@ const Login: React.FC = () => {
     const [variantLogin, setVariantLogin] = useState<string>('danger');
     const handleRegister = () => {
         axios
-            .post('https://socket.realdqhl.com/register', {
+            .post(baseURL + '/register', {
                 email: registerEmail,
                 password: registerPass,
             })
@@ -49,7 +51,7 @@ const Login: React.FC = () => {
 
     const handleLogin = () => {
         axios
-            .post('https://socket.realdqhl.com/login', {
+            .post(baseURL + '/login', {
                 email: loginEmail,
                 password: loginPass,
             })
