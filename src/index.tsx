@@ -24,12 +24,14 @@ import Meeting from './Meeting/Meeting';
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
 );
+const baseURL =
+    process.env.REACT_APP_BACKEND_URL || 'https://socket.realdqhl.com';
 
 const loader = async () => {
     if (localStorage.getItem('token') === null) {
         return <Alert variant='danger'>You are not logged in</Alert>;
     }
-    const res = await fetch('https://socket.realdqhl.com/get_rooms', {
+    const res = await fetch(baseURL + '/get_rooms', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +50,13 @@ const router = createBrowserRouter(
         <Route path='/' element={<Header />}>
             <Route index element={<Login />} />
             <Route path='/home' loader={loader} element={<GetRooms />} />
-            <Route path='/room/:id' loader={(id)=>{return id}} element={<Meeting />} />
+            <Route
+                path='/room/:id'
+                loader={(id) => {
+                    return id;
+                }}
+                element={<Meeting />}
+            />
         </Route>,
     ),
 );
