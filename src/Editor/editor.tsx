@@ -60,7 +60,6 @@ class Editor extends React.Component<Props, State> {
     private editor = React.createRef<any>();
     private alert = React.createRef<any>();
 
-
     componentDidMount() {
         socket.on('connect', () => {
             this.setState({ isConnected: true });
