@@ -16,14 +16,13 @@ import { Input } from '@mui/material';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import { Row } from 'react-bootstrap';
-import io from 'socket.io-client'
+import io from 'socket.io-client';
 
-let url = window.location.href
-let paras = url.split('/')
-const socket = io('https://socket.realdqhl.com?room_id='+paras.pop());
+let url = window.location.href;
+let paras = url.split('/');
+const socket = io('https://socket.realdqhl.com?room_id=' + paras.pop());
 
 class Editor extends React.Component {
-
     private editor = React.createRef<any>();
     private alert = React.createRef<any>();
     state = {
@@ -35,24 +34,23 @@ class Editor extends React.Component {
         testResult: 'Hit run to check',
         testSuccess: true,
         isResponse: false,
-        isConnected: socket.connected
+        isConnected: socket.connected,
     };
 
     componentDidMount() {
         socket.on('connect', () => {
-            this.setState({isConnected:true});
+            this.setState({ isConnected: true });
         });
-        socket.on('message',(data)=>{
-            console.log(data)
-            this.setState({code:data})
-        })
+        socket.on('message', (data) => {
+            console.log(data);
+            this.setState({ code: data });
+        });
     }
-
 
     handleEditorChange = (value: String) => {
         this.setState({ code: value });
-        if(value != this.state.code){
-            socket.emit('message',value)
+        if (value != this.state.code) {
+            socket.emit('message', value);
         }
     };
 
@@ -163,7 +161,7 @@ class Editor extends React.Component {
                     <CodeMirror
                         ref={this.editor}
                         value={this.state.code}
-                        height='400px'
+                        height='600px'
                         theme={xcodeLight}
                         extensions={[
                             loadLanguage(this.state.language as LanguageName)!,

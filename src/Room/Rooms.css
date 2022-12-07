@@ -33,10 +33,10 @@
 }
 .option {
     padding: 10%;
-    max-width: 570px;
+    max-width: 480px;
     box-shadow: 2px 2px 5px rgba(28, 27, 27, 0.72);
     margin: 60% 5%;
-    margin-top: 60%;
+
     border-radius: 10px;
 }
 
@@ -48,10 +48,12 @@
 }
 
 .create {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     border: none;
     background-image: url('create.png');
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .mb-2 {
     font-family: 'Times New Roman';

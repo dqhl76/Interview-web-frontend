@@ -9,15 +9,21 @@ import Webrtc from '../Webrtc/Webrtc';
 function Meeting() {
     return (
         <div className={'met'}>
-            <Row>
-                <Col md={6}>
+            <Row className={'metr'}>
+                <Col md={6} className={'metr'}>
                     <Container fluid className={'ide1'}>
                         <Editor />
                     </Container>
+                    {/*<Container fluid className={'score'}>*/}
+                    {/*    <Editor />*/}
+                    {/*</Container>*/}
                 </Col>
-                <Col md={6}>
+                <Col md={6} className={'metr'}>
                     <Container fluid className={'f2f'}>
                         <Webrtc />
+                    </Container>
+                    <Container fluid className={'board'}>
+                        <Editor />
                     </Container>
                     <Container fluid className={'command  text-center'}>
                         <Record />

@@ -48,7 +48,13 @@ const router = createBrowserRouter(
         <Route path='/' element={<Header />}>
             <Route index element={<Login />} />
             <Route path='/home' loader={loader} element={<GetRooms />} />
-            <Route path='/room/:id' loader={(id)=>{return id}} element={<Meeting />} />
+            <Route
+                path='/room/:id'
+                loader={(id) => {
+                    return id;
+                }}
+                element={<Meeting />}
+            />
         </Route>,
     ),
 );

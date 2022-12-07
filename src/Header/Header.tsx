@@ -21,7 +21,7 @@ const Header: React.FC = () => {
     return (
         <Container fluid className='header'>
             <Navbar bg='dark' variant='dark'>
-                <Container>
+                <Container fluid>
                     <Navbar.Brand href='./home'>Online Interview</Navbar.Brand>
                     <Nav className='justify-content-end'>
                         <Nav.Link href={url} className='active'>
