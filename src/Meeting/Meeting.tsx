@@ -5,14 +5,24 @@ import Editor from '../Editor/editor';
 import './Meeting.css';
 import Record from '../ScreenCatch/Record';
 import Webrtc from '../Webrtc/Webrtc';
+import { useLoaderData } from 'react-router-dom';
+
+interface IloaderData {
+    params: {
+        id: string;
+    };
+    request: Request;
+}
 
 function Meeting() {
+    const loaderData = useLoaderData() as IloaderData;
+    const id = loaderData.params.id;
     return (
         <div className={'met'}>
             <Row className={'metr'}>
                 <Col md={6} className={'metr'}>
                     <Container fluid className={'ide1'}>
-                        <Editor />
+                        <Editor room_id={id} />
                     </Container>
                     {/*<Container fluid className={'score'}>*/}
                     {/*    <Editor />*/}
@@ -20,7 +30,10 @@ function Meeting() {
                 </Col>
                 <Col md={6} className={'metr'}>
                     <Container fluid className={'f2f'}>
-                        <Webrtc />
+                        <Webrtc room_id={id} />
+                    </Container>
+                    <Container fluid className={'board'}>
+                        <Editor room_id={id} />
                     </Container>
                     <Container fluid className={'board'}>
                         <Editor />

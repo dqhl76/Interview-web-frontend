@@ -15,7 +15,7 @@ video {
     width: 100%;
     height: 80%;
 }
-video:first-child{
+video:first-child {
     position: absolute;
     width: 20%;
     height: 20%;
@@ -23,7 +23,7 @@ video:first-child{
     top: 20%;
     z-index: 100;
 }
-video:not(:first-child){
+video:not(:first-child) {
     position: absolute;
     width: 20%;
     height: 20%;
@@ -31,5 +31,3 @@ video:not(:first-child){
     top: 20%;
     z-index: 100;
 }
-
-

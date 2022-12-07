@@ -9,6 +9,8 @@ import axios from 'axios';
 interface IPros {
     closeSelf: () => void;
 }
+const baseURL =
+    process.env.REACT_APP_BACKEND_URL || 'https://socket.realdqhl.com';
 
 const CreateRoom: React.FC<IPros> = (props) => {
     const { closeSelf } = props;
@@ -26,7 +28,7 @@ const CreateRoom: React.FC<IPros> = (props) => {
         const time = date + 'T' + startTime + ':00.000Z';
         axios
             .post(
-                'https://socket.realdqhl.com/create_room',
+                baseURL + '/create_room',
                 {
                     start: time,
                     duration: duration,

@@ -18,36 +18,61 @@ import Container from 'react-bootstrap/Container';
 import { Row } from 'react-bootstrap';
 import io from 'socket.io-client';
 
-let url = window.location.href;
-let paras = url.split('/');
-const socket = io('https://socket.realdqhl.com?room_id=' + paras.pop());
+const baseURL =
+    process.env.REACT_APP_BACKEND_URL || 'https://socket.realdqhl.com';
 
-class Editor extends React.Component {
+const socket = io(baseURL);
+
+interface Props {
+    room_id: string;
+}
+
+interface State {
+    room_id: string;
+    code: string;
+    language: string;
+    languageId: number;
+    testInput: string;
+    expectedTestOutput: string;
+    testResult: string;
+    testSuccess: boolean;
+    isResponse: boolean;
+    isConnected: boolean;
+}
+
+class Editor extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            room_id: props.room_id,
+            code: '',
+            language: 'cpp',
+            languageId: 54,
+            testInput: '',
+            expectedTestOutput: '',
+            testResult: 'Hit run to check',
+            testSuccess: true,
+            isResponse: false,
+            isConnected: socket.connected,
+        };
+    }
+
     private editor = React.createRef<any>();
     private alert = React.createRef<any>();
-    state = {
-        code: '',
-        language: 'cpp',
-        languageId: 54,
-        testInput: '',
-        expectedTestOutput: '',
-        testResult: 'Hit run to check',
-        testSuccess: true,
-        isResponse: false,
-        isConnected: socket.connected,
-    };
 
     componentDidMount() {
         socket.on('connect', () => {
             this.setState({ isConnected: true });
         });
+        console.log(this.state.room_id);
+        socket.emit('join', this.state.room_id);
         socket.on('message', (data) => {
             console.log(data);
             this.setState({ code: data });
         });
     }
 
-    handleEditorChange = (value: String) => {
+    handleEditorChange = (value: string) => {
         this.setState({ code: value });
         if (value != this.state.code) {
             socket.emit('message', value);
