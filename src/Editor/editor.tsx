@@ -185,7 +185,7 @@ class Editor extends React.Component<Props, State> {
                     <CodeMirror
                         ref={this.editor}
                         value={this.state.code}
-                        height='600px'
+                        height='450px'
                         theme={xcodeLight}
                         extensions={[
                             loadLanguage(this.state.language as LanguageName)!,
