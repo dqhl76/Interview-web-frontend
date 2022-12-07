@@ -33,7 +33,7 @@ function Meeting() {
                         <Webrtc room_id={id} />
                     </Container>
                     <Container fluid className={'board'}>
-                        <Editor />
+                        <Editor room_id={id}/>
                     </Container>
                     <Container fluid className={'command  text-center'}>
                         <Record />
