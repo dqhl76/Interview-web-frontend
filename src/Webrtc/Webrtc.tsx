@@ -7,14 +7,19 @@ import { Console } from 'console';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
-interface Props {}
-
-class Webrtc extends React.Component<any, any> {
+interface Props {
+    room_id: string;
+}
+interface State {
+    value: string;
+    disable: boolean;
+}
+class Webrtc extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
         this.state = {
-            value: 'default',
+            value: props.room_id,
             disable: false,
         };
         this.startConnection = this.startConnection.bind(this);
@@ -49,7 +54,7 @@ class Webrtc extends React.Component<any, any> {
             var video = event.mediaElement;
             videoContainer!.appendChild(video);
         };
-
+        console.log(`room id: ${this.state.value}`);
         connection.openOrJoin(this.state.value);
     }
 
