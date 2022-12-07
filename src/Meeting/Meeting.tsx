@@ -6,7 +6,7 @@ import './Meeting.css';
 import Record from '../ScreenCatch/Record';
 import Webrtc from '../Webrtc/Webrtc';
 import { useLoaderData } from 'react-router-dom';
-
+import Draw from '../Draw/Draw';
 interface IloaderData {
     params: {
         id: string;
@@ -33,7 +33,7 @@ function Meeting() {
                         <Webrtc room_id={id} />
                     </Container>
                     <Container fluid className={'board'}>
-                        <Editor room_id={id} />
+                        <Draw room_id={id} />
                     </Container>
                     <Container fluid className={'command  text-center'}>
                         <Record />

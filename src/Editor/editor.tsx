@@ -73,10 +73,10 @@ class Editor extends React.Component<Props, State> {
     }
 
     handleEditorChange = (value: string) => {
-        this.setState({ code: value });
-        if (value != this.state.code) {
+        if (value !== this.state.code) {
             socket.emit('message', value);
         }
+        this.setState({ code: value });
     };
 
     handleChange = (event: SelectChangeEvent) => {
@@ -154,7 +154,6 @@ class Editor extends React.Component<Props, State> {
     };
 
     render() {
-        // @ts-ignore
         return (
             <Container>
                 <Row sx={{ minWidth: 120 }} className='select-language'>
