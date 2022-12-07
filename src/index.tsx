@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import {
     createBrowserRouter,
     RouterProvider,
@@ -21,9 +21,6 @@ import Header from './Header/Header';
 import Alert from 'react-bootstrap/Alert';
 import Meeting from './Meeting/Meeting';
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement,
-);
 const baseURL =
     process.env.REACT_APP_BACKEND_URL || 'https://socket.realdqhl.com';
 
@@ -61,10 +58,11 @@ const router = createBrowserRouter(
     ),
 );
 
-root.render(
+ReactDOM.render(
     <React.StrictMode>
         <RouterProvider router={router} />
     </React.StrictMode>,
+    document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
