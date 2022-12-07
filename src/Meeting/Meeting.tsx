@@ -14,16 +14,10 @@ function Meeting() {
                     <Container fluid className={'ide1'}>
                         <Editor />
                     </Container>
-                    <Container fluid className={'score'}>
-                        <Editor />
-                    </Container>
                 </Col>
                 <Col md={6}>
                     <Container fluid className={'f2f'}>
                         <Webrtc />
-                    </Container>
-                    <Container fluid className={'board'}>
-                        <Editor />
                     </Container>
                     <Container fluid className={'command  text-center'}>
                         <Record />
