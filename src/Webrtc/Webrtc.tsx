@@ -9,7 +9,6 @@ import Button from 'react-bootstrap/Button';
 import { eventListeners } from '@popperjs/core';
 import Row from 'react-bootstrap/esm/Row';
 import { Col } from 'react-bootstrap';
-const baseURL = 'https://webrtc.realdqhl.com/';
 interface Props {
     room_id: string;
 }
@@ -49,7 +48,7 @@ class Webrtc extends React.Component<Props, State> {
 
         var connection = new RTCMultiConnection();
 
-        connection.socketURL = baseURL;
+        connection.socketURL = 'https://webrtc.realdqhl.com/';
 
         connection.session = {
             audio: true,
