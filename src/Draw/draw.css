@@ -1,0 +1,19 @@
+.draw{
+    position: relative;
+    height: 80%;
+    width: 100%;
+}
+.drawcan{
+    position: relative;
+    height: 100% !important;
+    width: 100%!important;
+}
+.draw:first-child {
+    width: 100%;
+}
+.draw_btn{
+    position: relative;
+    height: 20%;
+    width: 100%;
+    padding:2%;
+}
