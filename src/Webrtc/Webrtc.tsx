@@ -9,8 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { eventListeners } from '@popperjs/core';
 import Row from 'react-bootstrap/esm/Row';
 import { Col } from 'react-bootstrap';
-const baseURL =
-    (process.env.REACT_APP_WEBRTC_URL +'/') || 'https://webrtc.realdqhl.com/';
+const baseURL = 'https://webrtc.realdqhl.com/';
 interface Props {
     room_id: string;
 }
